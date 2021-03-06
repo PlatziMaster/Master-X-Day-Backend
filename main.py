@@ -7,10 +7,10 @@ from flask_mysqldb import MySQL
 app = Flask(__name__)
 
 # Mysql Connection
-app.config['MYSQL_HOST'] = '' 
+app.config['MYSQL_HOST'] = 'localhost' 
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = ''
+app.config['MYSQL_PASSWORD'] = 'django'
+app.config['MYSQL_DB'] = 'aeroplatzi'
 mysql = MySQL(app)
 
 # settings
@@ -19,11 +19,19 @@ app.secret_key = "mysecretkey"
 # routes
 @app.route('/')
 def Index():
-    cur = mysql.connection.cursor()
-    data = cur.fetchall()
-    cur.close()
-    return 0
+    #cur = mysql.connection.cursor()
+    #data = cur.fetchall()
+    #cur.close()
+    return render_template('index.html')
 
+
+@app.route('/add_user')
+def add_contact():
+    mysql.connection.cursor()
+    cur.execute("INSERT INTO users (NAME, last_name, email) VALUES (%s,%s,%s)", ('William ', 'Tappan', 'ing.tappan@gmail'))
+    mysql.connection.commit()
+    flash('Contact Added successfully')
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
