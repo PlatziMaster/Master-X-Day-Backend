@@ -3,6 +3,7 @@ const scripts = document.getElementsByTagName("script")
 const domain = scripts[scripts.length - 1].getAttribute("src").split("?")[1].split('=')[1]
 const API = `http://159.203.118.150:8000/api/${domain}`;
 
+
 /** Obtain data from external resource parametrized with domain object.
  *
  */
