@@ -16,4 +16,21 @@ Instructions:
 ![Database structure](./Modelo-platzi-master.png "Database structure")
 
 2. SQL script added
-3. Template of Flask
+
+To run:
+
+```
+
+// Run database
+docker run --rm --name plmysql -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql
+
+```
+
+Copy the .sql file, run a bash in the container and run
+```
+// Run the script
+source creatablas.sql
+
+```
+
+3. Template of Flask and template of request
