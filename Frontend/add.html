@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroPlatzi</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<header>
+    <div class="container">
+        <div class="logo-box">
+            <a href="/">
+                <img src="./images/AeroPlatzi.png">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="">Flights</a></li>
+                <li><a href="">Add Flights</a></li>
+                <li><a href="">contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<body>
+    <div class="container-fluid">
+        <form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">id</label>
+                        <input type="text" class="form-control" id="id" placeholder="Id">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">origin </label>
+                        <input type="text" class="form-control" id="origin" placeholder="origin">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">destination </label>
+                        <input type="text" class="form-control" id="destination" placeholder="destination">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1"> date </label>
+                        <input type="date" class="form-control" id="date">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">time </label>
+                        <input type="time" class="form-control" id="date">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">number of passengers </label>
+                        <input type="number" class="form-control" id="NPasajeros" placeholder="number of passengers">
+
+                    </div>
+                    <div class="form-group">
+
+                        <label for="exampleInputEmail1">boarding gate </label>
+                        <input type="number" class="form-control" id="PEmbarque" placeholder="boarding gate">
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">status of the flights</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Selecciona</option>
+                            <option value="1">delayed</option>
+                            <option value="2">boarding</option>
+                            <option value="3">cancelled</option>
+                            <option value="4">on-time</option>
+                            <option value="5">in-flight</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="button">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" class="btn btn-success btn-lg w-100">Add</button>
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
