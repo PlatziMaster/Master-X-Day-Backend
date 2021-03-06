@@ -1,0 +1,1 @@
+SELECT airport.name, cities.name FROM airport INNER JOIN cities WHERE cities.id = airport.city_id LIMIT 10;
