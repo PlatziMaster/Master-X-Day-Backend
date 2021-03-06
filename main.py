@@ -19,10 +19,11 @@ app.secret_key = "mysecretkey"
 # routes
 @app.route('/')
 def Index():
-    #cur = mysql.connection.cursor()
-    #data = cur.fetchall()
-    #cur.close()
-    return render_template('index.html')
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM users')
+    data = cur.fetchall()
+    cur.close()
+    return render_template('index.html',  users=data)
 
 
 @app.route('/add_user')
