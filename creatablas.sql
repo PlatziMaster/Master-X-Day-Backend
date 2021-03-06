@@ -1,21 +1,20 @@
-CREATE TABLE IF NOT EXISTS ROUTES(
+CREATE TABLE `aeroplatzi`.`routes`(
 
-    ID INTEGER NOT NULL AUTO_INCREMENT,
-    ORIGIN VARCHAR(50) NOT NULL,
-    DESTINATION VARCHAR(50),
-    DISTANCE INTEGER,
-    CREATED_AT DATETIME NOT NULL DEFAULT NOW(),
-    UPDATED_AT DATETIME,
-    IS_ACTIVE BOOLEAN DEFAULT TRUE,
-    PRIMARY KEY (ID)
+    id INTEGER NOT NULL AUTO_INCREMENT,
+    origin VARCHAR(50) NOT NULL,
+    destination VARCHAR(50) NOT NULL,
+    distance INTEGER,
+    created_at DATETIME NOT NULL,
+    updated_at DATETIME,
+    is_active TINYINT ,
+    PRIMARY KEY (id)
 
 );
 
 
-
 CREATE TABLE `aeroplatzi`.`users` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `NAME` VARCHAR(50) NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   `last_name` VARCHAR(50) NOT NULL,
   `city` VARCHAR(50) NOT NULL,
   `address` VARCHAR(45) NOT NULL,
@@ -60,26 +59,3 @@ CREATE TABLE `aeroplatzi`.`flights` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-  CREATE TABLE `aeroplatzi`.`flights` (
-  `id` INT NOT NULL,
-  `rout_id` INT NULL,
-  `plane_id` INT NULL,
-  `takeoff_time` DATETIME NULL,
-  `landing_time` DATETIME NULL,
-  `boarding_gate` VARCHAR(45) NULL,
-  `state` VARCHAR(45) NULL,
-  `created_at` DATETIME NULL,
-  `updated_at` DATETIME NULL,
-  `is_active` TINYINT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `planes_id_idx` (`plane_id` ASC),
-  CONSTRAINT `planes_id`
-    FOREIGN KEY (`plane_id`)
-    REFERENCES `aeroplatzi`.`planes` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `routes_id`
-    FOREIGN KEY (`plane_id`)
-    REFERENCES `aeroplatzi`.`routes` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
