@@ -1,0 +1,30 @@
+TEAM 24 
+
+## Normalize a Database Diagram
+
+<img src="ModelER.png">
+
+## How many users have travelled in the last 7 days, organized by destination routes.
+
+select sum (num_of_passangers) SumPass, rutas_aviones_id from flight where DATEADD(s, Date_time -18000, '1970-01-01 00:00:00') >= DATEADD(dd,-7,now) group by rutas_aviones_id order by rutas_aviones_id
+
+## create view vwLeastfrequentroutsofthelast8hours
+
+select b.routes_planes_id [route], count (a.routes_planes_id) [CountRoutes] from flight a inner join routes_planes b on a.routes_planes_id = b.id where DATEADD(s, Date_time -18000, '1970-01-01 00:00:00') >= DATEADD(hh,-8,now) group by b.routes_planes_id 
+order by CountRoutes
+
+## create view vwHighestTrafficRoutes
+
+select top 20 b.routes_planes_id [route], count (a.routes_planes_id) [CountRoutes] from flight a inner join routes_planes b on a.routes_planes_id = b.id group by b.routes_planes_id order by CountRoutes desc
+
+## Justify in the delivery form I that it is described why the implementation proposal, in addition to the fact that the query script and entity relationship diagram must be delivered.
+
+We have the main table called “flights” related to an informative table that describes each state of a flight. It’s called “fligh_state”
+
+To store the data related to a passenger and a flight, we have a table called “flights_passengers”, It refers that a passenger can be in multiple flights and a flight belongs to multiple passengers. The information about a passenger is on the “passengers” table.
+
+The “airports” table is linked to the “route” table to describe the origin and destination airport of a flight.
+
+To specify the general route, we create a table called “plane_routes” related to a plane that may belong to several routes.
+
+Finally, the “plane_routes” table gives us the route assigned to a flight and the plane. We consider properly leave in the “flights” table information about origin and destination as a text for not requiring a join into de query.
