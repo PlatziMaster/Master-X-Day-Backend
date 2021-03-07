@@ -37,7 +37,7 @@ source creatablas.sql
 
 # 3rd and 4th stage
 
-# Run (Underline)
+# Run
 
 Run container:
 docker run --rm --name plmysql -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql
@@ -59,6 +59,7 @@ Run python scritp:
 python3 main.py
 
 
-##Endpoints (Underline)
+## Endpoints 
+
 /search_flight returns the amount of total flights
 /create_flight  creates a flight
