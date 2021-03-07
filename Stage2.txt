@@ -1,0 +1,21 @@
+
+
+We decided to use API REST due to its variety of data structures like JSON and 
+more important, SOAP is a more rigid set of messaging patterns than REST. 
+We create our API in Laravel
+We run it at Lavarel and MySql Hosting pre-configured.
+
+
+To Search all flights
+
+https://ads.humancode.com.co/api/flights
+
+
+To Search specific id
+
+https://ads.humancode.com.co/api/flights/{id}
+
+
+To Delete specific id
+
+https://ads.humancode.com.co/api/flights/{id}
