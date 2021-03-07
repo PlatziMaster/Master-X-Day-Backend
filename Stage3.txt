@@ -1,0 +1,1 @@
+In this stage, we have the interfase and CRUD on 80%
