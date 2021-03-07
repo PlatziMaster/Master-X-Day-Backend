@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Flight;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Interfaces\FlightInterface;
+use App\Http\Interfaces\AirportInterface;
 
-class FlightController extends Controller
+class AirportController extends Controller
 {
     use ApiResponse;
 
@@ -18,9 +17,9 @@ class FlightController extends Controller
      * [Eng] Create a new service instance.
      * [Spa] Crea una nueva instancia del servicio.
      *
-     * @param App\Http\Interfaces\FlightInterface $service
+     * @param App\Http\Interfaces\CountryInterface $service
      */
-    public function __construct(FlightInterface $service)
+    public function __construct(AirportInterface $service)
     {
         $this->service = $service;
     }
@@ -30,9 +29,9 @@ class FlightController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->successResponse($this->service->index());
+        return $this->successResponse($this->service->getAirportsByCities($request->all()));
     }
 
     /**
@@ -43,40 +42,40 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->successResponse($this->service->store($request->all()));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  App\Models\Flight  $flight
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Flight $flight)
+    public function show($id)
     {
-        return $this->successResponse($this->service->show($flight));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  App\Models\Flight  $flight
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Flight $flight)
+    public function update(Request $request, $id)
     {
-        return $this->successResponse($this->service->update($request->all(), $flight));
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  App\Models\Flight  $flight
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Flight $flight)
+    public function destroy($id)
     {
-        return $this->successResponse($this->service->destroy($flight));
+        //
     }
 }

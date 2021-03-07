@@ -6,7 +6,6 @@ use App\Models\Flight;
 use App\Repositories\FlightRepository;
 use App\Http\Interfaces\FlightInterface;
 
-
 class FlightService implements FlightInterface
 {
     private $repository;
@@ -28,14 +27,14 @@ class FlightService implements FlightInterface
      *
      * @param array $request
      */
-    public function search(array $request)
+    public function index()
     {
         $success = true;
         $message = 'ok';
         $response = [];
 
         try {
-            $response = "Search All";
+            $response = $this->repository->index();
         } catch (\Exception $e) {
             $success = false;
             $message = $e->getMessage();

@@ -8,10 +8,8 @@ interface FlightInterface
 {
     /**
      * Undocumented function
-     *
-     * @param array $request
      */
-    public function search(array $request);
+    public function index();
 
     /**
      * Undocumented function

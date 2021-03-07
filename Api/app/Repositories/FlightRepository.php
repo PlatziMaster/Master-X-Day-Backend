@@ -4,9 +4,20 @@ namespace App\Repositories;
 
 use App\Models\Flight;
 
-
 class FlightRepository
 {
+
+    /**
+     * Create a flight
+     *
+     * @param array $request
+     * @return App\Models\Flight
+     */
+    public function index()
+    {
+        return Flight::paginate();
+    }
+
     /**
      * Create a flight
      *

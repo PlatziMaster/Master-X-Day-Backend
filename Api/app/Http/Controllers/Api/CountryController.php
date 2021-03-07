@@ -2,14 +2,28 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Country;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Interfaces\CountryInterface;
 
 class CountryController extends Controller
 {
     use ApiResponse;
+
+    private $service;
+
+    /**
+     * [Eng] Create a new service instance.
+     * [Spa] Crea una nueva instancia del servicio.
+     *
+     * @param App\Http\Interfaces\CountryInterface $service
+     */
+    public function __construct(CountryInterface $service)
+    {
+        $this->service = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,17 +31,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        return $this->successResponse(Country::select('id','name')->with('cities:id,country_id,name')->paginate());
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return $this->successResponse($this->service->index());
     }
 
     /**
@@ -48,17 +52,6 @@ class CountryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
