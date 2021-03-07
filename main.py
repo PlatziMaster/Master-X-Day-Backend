@@ -18,6 +18,13 @@ mysql = MySQL(app)
 app.secret_key = "mysecretkey"
 
 # routes
+@app.route('/users')
+def Index():
+    cur = mysql.connection.cursor()
+    cur.execute('SELECT id, name, last_name, email FROM users')
+    data = cur.fetchall()
+    cur.close()
+    return render_template('users.html',  users=data)
 
 
 @app.route('/search_flight', methods=['GET'])
@@ -50,15 +57,36 @@ def create_flight():
         mysql.connection.commit()
 
        
-        return "json.dumps(json_data)"
+        return render_template('crud_flights.html')
+
+   
+@app.route('/create_flight_form', methods=['POST'])
+def create_flight_form():
+    if request.method == 'POST':
+
+        cur = mysql.connection.cursor()
+        origin = request.form['origin']
+        destination = request.form['destination']
+        date = request.form['date']
+        time = request.form['time']
+        boarding_gate = request.form['boarding_gate']
+        status = request.form['status']
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO routes (ORIGIN, DESTINATION) VALUES (%s,%s)", (origin, destination))
+        cur.execute("INSERT INTO flights (ORIGIN, DESTINATION) VALUES (%s,%s)", (origin, destination))
+
+        mysql.connection.commit()
+        flash('Contact Added successfully')
+    return render_template('crud_flights.html')
 
 
 @app.route('/update_flight', methods=['POST'])
 def update_flight():
     #cur = mysql.connection.cursor()
     #data = cur.fetchall()
-    # cur.close()
-    return 'update_flight'
+    #cur.close()
+    return render_template('crud_flights.html',  users=data)
+
 
 
 @app.route('/delete_flight', methods=['POST'])
@@ -68,6 +96,14 @@ def delete_flight():
     # cur.close()
     return 'delete_flight'
 
+
+    
+@app.route('/')
+def inicio():
+    #cur = mysql.connection.cursor()
+    #data = cur.fetchall()
+    #cur.close()
+    return render_template('crud_flights.html')
 
 if __name__ == "__main__":
     app.run(port=8080, debug=True)
