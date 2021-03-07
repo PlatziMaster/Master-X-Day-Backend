@@ -27,7 +27,6 @@ def search_flight():
         cur.execute('''SELECT COUNT(*) FROM aeroplatzi.flights ''')
         rv = cur.fetchall()
         row_headers = [x[0] for x in cur.description]
-        print(rv)
         json_data = []
         for result in rv:
             json_data.append(dict(zip(row_headers, result)))
@@ -39,27 +38,19 @@ def create_flight():
     if request.method == 'POST':
         cur = mysql.connection.cursor()
 
-        flights_route = 123
-        flights_planes = 25
-        flights_takeoff = 872
-        flights_landing = '2021-04-03 14:00:45'
-        flights_gate = '45'
-        flights_state = 'ON TIME'   
-        flights_created = '2021-04-03 14:45:45'
-        flights_updated = '4'
-        flights_is_active = TRUE
+        flights_id = 123
+        flights_route = 20
+        flights_planes = 555
+        flights_gate = '36'
+        flights_is_active = 1
 
-        cur.execute('''INSERT INTO aeroplatzi.flights VALUES (123,25,872,'2021-04-03 14:00:45',
-        '2021-04-03 14:45:45','4','ON TIME',NOW(),NOW(),TRUE)''')
+        fields = (flights_id, flights_route, flights_planes,flights_gate, flights_is_active)
+        sql = '''INSERT INTO aeroplatzi.flights VALUES (%d,%d,%d,'2021-04-03 14:40:45','2021-04-03 14:40:45',%s,'in-flight',NOW(),NOW(),%d)'''
+        cur.execute(sql % fields)
+        mysql.connection.commit()
 
-
-        rv = cur.fetchall()
-        row_headers = [x[0] for x in cur.description]
-        print(rv)
-        json_data = []
-        for result in rv:
-            json_data.append(dict(zip(row_headers, result)))
-        return json.dumps(json_data)
+       
+        return "json.dumps(json_data)"
 
 
 @app.route('/update_flight', methods=['POST'])
