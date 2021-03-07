@@ -42,7 +42,7 @@ CREATE TABLE `aeroplatzi`.`flights` (
   `takeoff_time` DATETIME NULL,
   `landing_time` DATETIME NULL,
   `boarding_gate` VARCHAR(45) NULL,
-  `state` VARCHAR(45) NULL,
+  `state` ENUM('delayed', 'boarding', 'cancelled', 'on-time', 'in-flight'),
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
   `is_active` TINYINT NULL,
