@@ -1,11 +1,7 @@
-SELECT  Routes.Name, COUNT(Flights.IDRoute) as Route
-FROM Routes 
-JOIN Flights
-ON Flights.IDRoute = Routes.IDRoute
-
-
+SELECT routes.Name
+	,COUNT(flights.IDRoute) AS Route
+FROM routes
+JOIN flights ON routes.IDRoute = flights.IDRoute
 WHERE NOW() - INTERVAL 8 HOUR
-
-GROUP BY Route
-ORDER BY COUNT(Route) desc 
-LIMIT 10
+GROUP BY routes.Name
+ORDER BY COUNT(Route) ASC LIMIT 10

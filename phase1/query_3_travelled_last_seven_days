@@ -1,8 +1,0 @@
-SELECT  Routes.ID.Arrived,
-        COUNT(Users.IDUsers)
-FROM Users 
-INNER JOIN ON Users.IDUsers = Bookings.IDUsers
-INNER JOIN ON Bookings.IDFlight = lights.IDFlights
-INNER JOIN ON Flights.IDRoute = Routes.IDRoute
-WHERE Flights.ArrivedTime INTERVAL 7 day
-ORDER BY Routes.ID.Arrived;
