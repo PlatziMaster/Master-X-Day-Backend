@@ -8,16 +8,15 @@ const API = `http://159.203.118.150:8000/api/${domain}`;
  *
  */
 const consumerData = () => {
-    fetch(API, { mode: 'no-cors'})
+    fetch(API, { headers: {'Content-Type': 'application/json'},})
         .then(response => response.json())
         .then(response => {
-            const instances = response.results
-            console.log(instances)
+            const instances = response
             let output = instances.map(singleInstance => {
                 try {
                     let printedContent = `<div class="grid-item"> `;
-                    singleInstance.map((key, value) => {
-                        printedContent += ` <h4 class="component-key"> ${key}: </h4> <h4 class="component-value">> `
+                    Object.entries(singleInstance).forEach(property => {
+                        printedContent += `<div class="property-object"> <h4 class="component-key d-inline"> ${property[0]}: </h4> <h4 class="component-value d-inline"> ${property[1]}</h4></div>`
                     })
                     return ` ${printedContent}
                              </div> <br><br>`
@@ -36,4 +35,7 @@ const consumerData = () => {
         })
 }
 
+/** Allow to render the fields where will be changed values.
+ *
+ */
 setTimeout(consumerData(), 1000)
