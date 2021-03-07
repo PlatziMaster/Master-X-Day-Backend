@@ -63,3 +63,14 @@ python3 main.py
 
 /search_flight returns the amount of total flights
 /create_flight  creates a flight
+/create_flight_from  creates a flight with data from Html form
+
+## Deployment
+
+The project is allocated in a VM of Compute Engine on GCP
+
+The VM are running the app over python and running the docker container with the DB.
+
+The Public IP is: http://34.123.162.238:8080/
+
+and the configured domain is: https://datacloudgui.com/
