@@ -34,3 +34,31 @@ source creatablas.sql
 ```
 
 3. Template of Flask and template of request
+
+# 3rd and 4th stage
+
+# Run (Underline)
+
+Run container:
+docker run --rm --name plmysql -e MYSQL_ROOT_PASSWORD=secret -p 3306:3306 -d mysql
+docker cp creatablas.sql plmysql:/creatablas.sql
+
+Enter into mysql:
+docker exec -it plmysql /bin/bash
+
+Access to database:
+mysql -u root -p
+Login with the password: secret
+
+Create database aeroplatzi:
+create database aeroplatzi;
+use aeroplatzi;
+source creatablas.sql
+
+Run python scritp:
+python3 main.py
+
+
+##Endpoints (Underline)
+/search_flight returns the amount of total flights
+/create_flight  creates a flight
