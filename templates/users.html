@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block body %}
+<div class="container pt-4">
+    <div class="col-md-7">
+      <table class="table table-striped table-hover table-bordered table-sm bg-white">
+        <thead>
+          <tr>
+            <td>id</td>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>email</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+          <tr>
+            <td>{{user.0}}</td>
+            <td>{{user.1}}</td>
+            <td>{{user.2}}</td>
+            <td>{{user.3}}</td>
+            <td>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
