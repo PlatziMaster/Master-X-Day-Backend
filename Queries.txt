@@ -1,0 +1,32 @@
+AeroPlatzi's routes and times with the highest traffic.
+
+SELECT
+	R.RouteId,
+    F.Time,
+    COUNT(R.RouteId) Total
+FROM Flight F
+INNER JOIN Route R ON R.RouteId = F.RouteId
+GROUP BY F.Time, R.RouteId
+ORDER BY 3 DESC
+
+
+Least frequent routs of the last 8 hours
+
+SELECT
+	R.RouteId,
+    COUNT(R.RouteId) Total
+FROM Flight F
+INNER JOIN Route R ON R.RouteId = F.RouteId
+WHERE CAST(CONCAT(F.DATE, ' ', F.TIME) AS DATETIME) >= DATE_ADD(NOW(), INTERVAL -8 HOUR)
+GROUP BY R.RouteId
+ORDER BY 2
+
+How many users have travelled in the last 7 days, organized by destination routes.
+
+SELECT
+	R.CityId_Destiny,
+    COUNT(FU.FlightUsersId) Total
+FROM Flight F
+INNER JOIN Route R ON R.RouteId = F.RouteId
+INNER JOIN FlightUsers FU ON FU.FlightId = F.FlightId
+WHERE CAST(CONCAT(F.DATE, ' ', F.TIME) AS DATETIME) >= DATE_ADD(NOW(), INTERVAL -7 DAY)
