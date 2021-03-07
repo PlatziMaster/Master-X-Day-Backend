@@ -37,7 +37,7 @@ CREATE TABLE `aeroplatzi`.`planes` (
 
 CREATE TABLE `aeroplatzi`.`flights` (
   `id` INT NOT NULL,
-  `rout_id` INT NULL,
+  `routes_id` INT NULL,
   `plane_id` INT NULL,
   `takeoff_time` DATETIME NULL,
   `landing_time` DATETIME NULL,
@@ -54,7 +54,7 @@ CREATE TABLE `aeroplatzi`.`flights` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `routes_id`
-    FOREIGN KEY (`plane_id`)
+    FOREIGN KEY (`routes_id`)
     REFERENCES `aeroplatzi`.`routes` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
